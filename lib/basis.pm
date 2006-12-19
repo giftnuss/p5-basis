@@ -8,7 +8,7 @@
 ; sub import
     { shift()
 	; my @basis=@_
-	; my $return = uplevel(1,\&{base::import},'base',@basis)
+	; my $return = uplevel(1,\&base::import,'base',@basis)
 	; foreach ( @basis )
 	    { my $import = $_->can('import') 
 		; uplevel( 1, $import , $_ ) if $import 
