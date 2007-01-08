@@ -6,16 +6,16 @@ my $builder = Module::Build->new(
     module_name         => 'basis',
     license             => 'perl',
     dist_author         => 'Sebastian Knapp <sk@computer-leipzig.com>',
-    dist_version_from   => 'lib/basis.pm',
+	dist_version        => '0.02',
 	requires => {
         'perl'          => '5.6.0',
-        'Sub::Uplevel'  => '0',
+        'Sub::Uplevel'  => '0.12',
 	},
     build_requires => {
         'Test::More' => 0,
     },
     add_to_cleanup      => [ 'basis-*' ],
-	create_makefile_pl  => 'traditional' 
+	create_makefile_pl  => 'traditional', 
 );
 
 $builder->create_build_script();

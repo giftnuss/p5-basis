@@ -1,20 +1,19 @@
-
-; package basis
+  package basis
 ; use base 'base'
 ; use Sub::Uplevel
 
-; our $VERSION = '0.01'
+; our $VERSION = '0.02'
 
 ; sub import
     { shift()
-	; my @basis=@_
-	; my $return = uplevel(1,\&base::import,'base',@basis)
-	; foreach ( @basis )
-	    { my $import = $_->can('import') 
-		; uplevel( 1, $import , $_ ) if $import 
-		}
-	; $return
-	}
+    ; my @basis=@_
+    ; my $return = uplevel(1,\&base::import,'base',@basis)
+    ; foreach ( @basis )
+        { my $import = $_->can('import') 
+        ; uplevel( 1, $import , $_ ) if $import 
+        }
+    ; $return
+    }
 
 ; 1
 
@@ -26,7 +25,7 @@ basis - use base with import call
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
@@ -47,8 +46,8 @@ It uses Sub::Uplevel to do the construct
 
 or the other way around
 
-   use base qw/Foo bal/;
    use Foo; use bal;
+   use base qw/Foo bal/;
    
 
 transparently for the parent and child class.
