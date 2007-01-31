@@ -1,11 +1,12 @@
 Build.PL
 Changes
-MANIFEST
-META.yml # Will be created by "make dist"
-README
 lib/basis.pm
+Makefile.PL
+MANIFEST
+META.yml			# Will be created by "make dist"
+README
 t/00-load.t
+t/05-die_without_sub_uplevel.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t
-Makefile.PL

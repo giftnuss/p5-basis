@@ -2,14 +2,13 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-          'PL_FILES' => {},
-          'INSTALLDIRS' => 'site',
           'NAME' => 'basis',
-          'EXE_FILES' => [],
-          'VERSION_FROM' => 'lib/basis.pm',
+          'VERSION' => '0.03',
           'PREREQ_PM' => {
-                           'Test::More' => 0,
-                           'Sub::Uplevel' => '0.12'
-                         }
+                           'Sub::Uplevel' => '0.12',
+                           'Test::More' => '0'
+                         },
+          'INSTALLDIRS' => 'site',
+          'PL_FILES' => {}
         )
 ;
