@@ -1,9 +1,30 @@
-#!perl -T
+#!/usr/bin/perl
 
-use Test::More tests => 1;
+; use Sub::Uplevel
+; use strict
+; package main
 
-BEGIN {
-	use_ok( 'basis' );
-}
+; use Test::More tests => 5
 
-diag( "Testing basis $basis::VERSION, Perl $], $^X" );
+; BEGIN { use_ok( 'basis' ) }
+
+; diag( "Testing basis $basis::VERSION, Perl $], $^X" )
+
+########################################################
+# Test with inline classes
+
+; package My::Base
+
+; sub import { $My::Base::v="i" }
+
+; package My::Shoe
+; use basis 'My::Base'
+
+; package main
+
+; use Data::Dumper
+
+; is($My::Base::VERSION, "-1, set by base.pm")
+; ok(! My::Shoe->isa("Sub::Uplevel"))
+; ok(My::Shoe->isa("My::Base") , "isa")
+; is($My::Base::v , "i"        , "import call")
