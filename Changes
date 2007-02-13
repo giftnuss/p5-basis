@@ -1,4 +1,5 @@
 Revision history for basis
+0.03    Croaks if Sub::Uplevel does not work
 
 0.02    Fixed bug in test, introduced by to old Module::Starter.
 
