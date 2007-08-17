@@ -2,15 +2,27 @@
 ; use base 'base'
 ; use Sub::Uplevel
 
-; our $VERSION = '0.03'
+; our $VERSION = '0.04'
 
 ; sub import
     { shift()
     ; my @basis=@_
+
+    # filter argument arrays
+    ; my %args
+    ; for ($i=0; $i<=$#basis; $i++)
+        { if(ref $basis[$i+1] eq 'ARRAY')
+	    { $args{$basis[$i]}=splice(@basis,$i+1,1)
+	    }
+	  else
+	    { $args{$basis[$i]}=[]
+	    }
+	}
+
     ; my $return = uplevel(1,\&base::import,'base',@basis)
     # this checks if the above works, which is not the case
     # if Sub::Uplevel was loaded to late
-    # it is better to die if this not work
+    # it is better to die if this not works
     ; my $inheritor=caller(0)
     ; foreach ( @basis )
         { next if $inheritor->isa($_) 
@@ -20,9 +32,9 @@
 Maybe Sub::Uplevel was loaded to late for your script.   
 ERROR
         }
-    ; foreach ( @basis )
-        { my $import = $_->can('import') 
-        ; uplevel( 1, $import , $_ ) if $import 
+    ; foreach my $m ( @basis )
+        { my $import = $m->can('import') 
+        ; uplevel( 1, $import , $m , @{$args{$m}} ) if $import 
         }
     ; $return
     }
@@ -37,7 +49,7 @@ basis - use base with import call
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SYNOPSIS
 
@@ -46,6 +58,11 @@ Similar to base:
     package Baz;
     use basis qw/Foo bal/;
 	
+Or with arguments for import:
+
+    package Foob;
+    use basis Bary => [go => "away"];
+
 =head1 DESCRIPTION
 
 It uses Sub::Uplevel to do the construct
@@ -53,10 +70,14 @@ It uses Sub::Uplevel to do the construct
   BEGIN {
 	  use base qw/Foo bal/;
 	  Foo->import;
-	  bal->import;
+	  bal->import('tor');
   };
 
 transparently for the parent and child class.
+
+If the classname is followed by a array reference, than
+the dereferenced array is used in the import
+call as argument.
 
 =head1 IMPORTANT NOTE
 

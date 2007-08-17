@@ -27,3 +27,5 @@ my $error1
 
 ; like($error1,$expect)
 
+# no warning once
+; defined($My::Base::v) or 1
