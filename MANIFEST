@@ -1,3 +1,4 @@
+.cvsignore
 Build.PL
 Changes
 lib/basis.pm
@@ -6,6 +7,7 @@ MANIFEST
 META.yml			# Will be created by "make dist"
 README
 t/00-load.t
+t/01-import.t
 t/05-die_without_sub_uplevel.t
 t/boilerplate.t
 t/pod-coverage.t

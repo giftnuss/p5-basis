@@ -1,6 +1,6 @@
   package basis
 ; use base 'base'
-; use Sub::Uplevel
+; use Sub::Uplevel 0.12 # 0.9 does not, 0.10/0.11 ?
 
 ; our $VERSION = '0.04'
 
@@ -103,7 +103,8 @@ your bug as I make changes.
 =head1 ACKNOWLEDGEMENTS
 
 Thank you Michael G. Schwern for base and Sub::Uplevel. I hope this tiny 
-addon finds your blessing. Thank David A Golden for maintenance	of Sub::Uplevel.
+addon finds your blessing. Thank you David A Golden for maintenance and
+improvement of Sub::Uplevel.
 	
 =head1 SEE ALSO
 
