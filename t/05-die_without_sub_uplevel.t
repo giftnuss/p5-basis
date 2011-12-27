@@ -3,29 +3,30 @@
 ; use strict
 ; package main
 
-; use Test::More tests => 2
-
-; BEGIN { use_ok( 'basis' ) }
-
-; diag( "Testing basis $basis::VERSION, Perl $], $^X" )
-
-########################################################
-# Test with inline classes
+; use Test::More tests => 1
 
 ; package My::Base
 
 ; sub import { $My::Base::v="i" }
 
-my $error1
-; package My::Shoe
-; BEGIN { eval "use basis 'My::Base'" 
-        ; $error1=$@
+; SKIP:
+    { package main
+    ; local $basis::base = $basis::base
+    ; BEGIN
+        { eval "require base"
+	; skip "base specific test",1 if $@
+	; $basis::base = 'base'
         }
-; package main
+    ; my $error1
+    ; package My::Shoe
+    ; eval "use basis 'My::Base'" 
+    ; $error1=$@
 
-; my $expect=qr/'basis' was not able to setup the base class 'My::Base' for 'My::Shoe'/
+    ; package main
 
-; like($error1,$expect)
+    ; my $expect=qr/'basis' was not able to setup the base class 'My::Base' for 'My::Shoe'/
 
+    ; like($error1,$expect)
+    }
 # no warning once
 ; defined($My::Base::v) or 1
