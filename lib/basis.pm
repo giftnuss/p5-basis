@@ -1,8 +1,22 @@
   package basis
-; use base 'base'
+; our $base
+; BEGIN 
+    { unless($base)
+        { for my $realbase (qw(parent base))
+	    { eval "require $realbase"
+            ; unless($@)
+                { $base = $realbase
+		; last
+                }
+            }
+	; unless($base)
+            { die "Perl pragma parent/base not loadable."
+            } 
+        }  
+    }
 ; use Sub::Uplevel 0.12 # 0.9 does not, 0.10/0.11 ?
 
-; our $VERSION = '0.04'
+; our $VERSION = '0.05'
 
 ; sub import
     { shift()
@@ -18,8 +32,8 @@
 	    { $args{$basis[$i]}=[]
 	    }
 	}
-
-    ; my $return = uplevel(1,\&base::import,'base',@basis)
+    ; my $builder = $base->can('import')
+    ; my $return = uplevel(1,$builder,'base',@basis)
     # this checks if the above works, which is not the case
     # if Sub::Uplevel was loaded to late
     # it is better to die if this not works
@@ -49,18 +63,18 @@ basis - use base with import call
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =head1 SYNOPSIS
 
 Similar to base:
     
     package Baz;
-    use basis qw/Foo bal/;
-	
+    use basis qw/Foo bar/;
+
 Or with arguments for import:
 
-    package Foob;
+    package Foo;
     use basis Bary => [go => "away"];
 
 =head1 DESCRIPTION
@@ -78,6 +92,11 @@ transparently for the parent and child class.
 If the classname is followed by a array reference, than
 the dereferenced array is used in the import
 call as argument.
+
+Now it uses the C<import> function which is stored in the
+global variable C<$basis::base>. If not et from the outside
+it tries to load parent and after this the base pragma, to
+determine prama to use.
 
 =head1 IMPORTANT NOTE
 
@@ -109,7 +128,10 @@ improvement of Sub::Uplevel.
 =head1 SEE ALSO
 
 L<Sub::Uplevel>
+
 L<base>
+
+L<parent>
 
 =head1 COPYRIGHT & LICENSE
 
