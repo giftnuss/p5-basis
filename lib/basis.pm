@@ -33,7 +33,8 @@
 	    }
 	}
     ; my $builder = $base->can('import')
-    ; my $return = uplevel(1,$builder,'base',@basis)
+    ; my $return = uplevel(1, $builder, $base, @basis)
+    ; shift @basis if $basis[0] eq '-norequire'
     # this checks if the above works, which is not the case
     # if Sub::Uplevel was loaded to late
     # it is better to die if this not works
@@ -42,7 +43,7 @@
         { next if $inheritor->isa($_) 
         ; require Carp;
         ; Carp::croak(<<ERROR)
-'basis' was not able to setup the base class '$_' for '$inheritor'.
+'basis' via '$base' was not able to setup the base class '$_' for '$inheritor'.
 Maybe Sub::Uplevel was loaded to late for your script.   
 ERROR
         }
