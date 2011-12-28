@@ -24,7 +24,7 @@
 
     ; package main
 
-    ; my $expect=qr/'basis' was not able to setup the base class 'My::Base' for 'My::Shoe'/
+    ; my $expect=qr/'basis' via 'base' was not able to setup the base class 'My::Base' for 'My::Shoe'/
 
     ; like($error1,$expect)
     }
