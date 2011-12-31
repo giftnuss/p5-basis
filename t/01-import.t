@@ -19,7 +19,7 @@
 
 ; SKIP:
     { package main
-    ; local $basis::base = $local::base
+    ; local $basis::base = $basis::base
     ; BEGIN
         { eval "require base"
 	; skip("base specific tests", 8) if $@
