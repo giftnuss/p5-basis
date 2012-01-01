@@ -1,7 +1,7 @@
 ---
 abstract: 'use base with import call'
 author:
-  - 'Sebastian Knapp <sk@computer-leipzig.com>'
+  - 'Sebastian Knapp <rock@ccls-online.de>'
 build_requires:
   Test::More: 0
 configure_requires:
@@ -13,9 +13,11 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: basis
+recommends:
+  parent: 0.225
 requires:
   Sub::Uplevel: 0.12
   perl: v5.6.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.05
+version: 0.05001
