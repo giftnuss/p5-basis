@@ -4,6 +4,7 @@ Revision history for basis
 * ensure basis works with parent pragma
 * add more tests
 * move pod tests into xt directory
+* return immediatly without arguments
 
 0.05_01 - 27 Dec 2011 
 * base is not longer the base of basis
