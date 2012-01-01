@@ -101,13 +101,13 @@ defaults to C<parent> and as second alternative to C<base>.
 
 =head1 IMPORTANT NOTE
 
-The call of Sub::Uplevel might come to late, so the uplevel call 
+The call of Sub::Uplevel might come to late, so C<uplevel> 
 will not work as expected. If you use this module, the same rule 
 as for Sub::Uplevel applies:
 
 Use Sub::Uplevel as early as possible in your program.
 
-Now this modul croaks when Sub::Uplevel is not used earlier enough.
+Now this module croaks when Sub::Uplevel is not used earlier enough.
 	
 =head1 AUTHOR
 
@@ -118,13 +118,13 @@ Sebastian Knapp, C<< <rock@ccls-online.de> >>
 Please report any bugs or feature requests to
 C<bug-basis at rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=basis>.
-I will be notified, and then you'll automatically be notified of progress on
-your bug as I make changes.
+I will be notified, and then you will automatically be notified 
+of progress on your bug as I make changes.
 
-=head1 ACKNOWLEDGEMENTS
+=head1 ACKNOWLEDGMENT
 
 Thank you Michael G. Schwern for base and Sub::Uplevel. I hope this tiny 
-addon finds your blessing. Thank you David A Golden for maintenance and
+add-on finds your blessing. Thank you David A Golden for maintenance and
 improvement of Sub::Uplevel.
 	
 =head1 SEE ALSO

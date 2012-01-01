@@ -16,4 +16,5 @@ t/lib/Biga.pm
 t/lib/Boo.pm
 xt/boilerplate.t
 xt/pod-coverage.t
+xt/pod-spelling.t
 xt/pod.t
