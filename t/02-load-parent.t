@@ -15,16 +15,17 @@
 
 ; sub import { $My::Base::v="i" }
 
-SKIP: {
-    package main;
-    local $basis::base = $basis::base;
-    BEGIN 
-        { eval "require parent"
-        ; skip("parent specific test",4) if $@
-        ; $basis::base = 'parent'
-        }
+; my $skip
+; BEGIN
+    { eval "require parent"
+    ; $skip = !!$@
+    }
+
+; SKIP: {
+    ; skip("parent specific test",4) if $skip
+    ; local $basis::base = 'parent';
     ; package My::Shoe
-    ; use basis -norequire => 'My::Base'
+    ; eval "use basis -norequire => 'My::Base'"
 
     ; package main
     ; ok(! My::Shoe->isa("Sub::Uplevel"))

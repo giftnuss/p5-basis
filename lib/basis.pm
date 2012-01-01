@@ -14,9 +14,8 @@
             } 
         }  
     }
-; use Sub::Uplevel 0.12 # 0.9 does not, 0.10/0.11 ?
-
-; our $VERSION = '0.05'
+; use Sub::Uplevel 0.12; 
+our $VERSION = '0.05001';
 
 ; sub import
     { shift()
@@ -45,7 +44,7 @@
         ; require Carp;
         ; Carp::croak(<<ERROR)
 'basis' via '$base' was not able to setup the base class '$_' for '$inheritor'.
-Maybe Sub::Uplevel was loaded to late for your script.   
+Maybe Sub::Uplevel was load to late for your script.   
 ERROR
         }
     ; foreach my $m ( @basis )

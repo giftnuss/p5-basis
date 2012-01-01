@@ -17,23 +17,26 @@
 
 ; sub wildlife { 0 }
 
+; my $skip;
+; BEGIN
+    { eval "require base"
+    ; $skip = !!$@
+    }
+
 ; SKIP:
-    { package main
-    ; local $basis::base = $basis::base
-    ; BEGIN
-        { eval "require base"
-	; skip("base specific tests", 8) if $@
-	; $basis::base = 'base'
-        }
+    { skip("module base specific tests", 8) if $skip
+
+    ; package main
+    ; local $basis::base = 'base'
     ; package My::Shoe
-    ; use basis 'My::Base', 'Exporter'
+    ; eval "use basis 'My::Base', 'Exporter'"
   
     ; our @EXPORT_OK=qw/guard/
   
     ; sub guard { 1 }
 
     ; package Kan::Guru
-    ; use basis 'My::Shoe' => ['guard']
+    ; eval "use basis 'My::Shoe' => ['guard']"
 
     ; package main
 
@@ -46,7 +49,10 @@
     ; is($My::Base::v , "i"        , "import call")
   
     ; ok(Kan::Guru->can('guard') && Kan::Guru->guard)
-    ; is("@My::Shoe::ISA","My::Base Exporter")
-    ; is("@Kan::Guru::ISA","My::Shoe")
+
+    ; { no warnings 'ambiguous'
+      ; is("@My::Shoe::ISA","My::Base Exporter")
+      ; is("@Kan::Guru::ISA","My::Shoe")
+      }
     }
 

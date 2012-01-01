@@ -5,8 +5,8 @@ use Module::Build;
 my $builder = Module::Build->new(
     module_name         => 'basis',
     license             => 'perl',
-    dist_author         => 'Sebastian Knapp <sk@computer-leipzig.com>',
-	dist_version        => '0.05',
+    dist_author         => 'Sebastian Knapp <rock@ccls-online.de>',
+	dist_version        => '0.05001',
 	requires => {
         'perl'          => '5.6.0',
         'Sub::Uplevel'  => '0.12',
@@ -19,6 +19,9 @@ my $builder = Module::Build->new(
     },
     add_to_cleanup      => [ 'basis-*' ],
     create_makefile_pl  => 'traditional', 
+    recommends => {
+        'parent' => '0.225'
+    }
 );
 
 $builder->create_build_script();

@@ -1,5 +1,14 @@
 Revision history for basis
 
+0.05001 - 01 Jan 2012
+* fixes some tests, nesting a BEGIN block inside of SKIP block
+  seems to make trouble in older perls
+* this module recommends parent
+* suppress warning "Possible unintended interpolation"
+
+0.05 - 01 Jan 2012
+* release version 0.05
+
 0.05_02 - 28 Dec 2011
 * ensure basis works with parent pragma
 * add more tests

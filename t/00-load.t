@@ -17,20 +17,21 @@
 
 ; sub import { $My::Base::v="i" }
 
+; my $skip
+; BEGIN 
+    { eval "require base"
+    ; $skip = !!$@
+    }
+
 SKIP: {
-    package main;
-    local $basis::base = $basis::base;
-    BEGIN 
-        { eval "require base"
-        ; skip("base specific test",4) if $@
-        ; $basis::base = 'base'
-        }
-    ; package My::Shoe
-    ; use basis 'My::Base'
+    ; skip("module base specific test",4) if $skip
 
     ; package main
+    ; local $basis::base = 'base'
+    ; package My::Shoe
+    ; eval "use basis 'My::Base'"
 
-    ; use Data::Dumper
+    ; package main
 
     ; is($My::Base::VERSION, "-1, set by base.pm")
     ; ok(! My::Shoe->isa("Sub::Uplevel"))
