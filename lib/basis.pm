@@ -13,9 +13,10 @@
             { die "Perl pragma parent/base not loadable."
             } 
         }  
-    }
-; use Sub::Uplevel 0.12; 
-our $VERSION = '0.05001';
+    };
+
+use Sub::Uplevel 0.12; 
+our $VERSION='0.05002';
 
 ; sub import
     { shift()

@@ -1,4 +1,6 @@
 Revision history for basis
+0.05002 - 02 Jan 2012
+* test fix
 
 0.05001 - 01 Jan 2012
 * fixes some tests, nesting a BEGIN block inside of SKIP block

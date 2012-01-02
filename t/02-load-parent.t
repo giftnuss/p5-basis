@@ -21,7 +21,8 @@
     ; $skip = !!$@
     }
 
-; SKIP: {
+; SKIP:
+    { package main
     ; skip("parent specific test",4) if $skip
     ; local $basis::base = 'parent';
     ; package My::Shoe

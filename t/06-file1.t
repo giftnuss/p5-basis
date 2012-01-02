@@ -19,3 +19,4 @@ BEGIN {
 isa_ok('Boo','Biga');
 is(Boo->low,0);
 is(Boo->high,1);
+

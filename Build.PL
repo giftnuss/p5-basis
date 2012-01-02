@@ -6,11 +6,11 @@ my $builder = Module::Build->new(
     module_name         => 'basis',
     license             => 'perl',
     dist_author         => 'Sebastian Knapp <rock@ccls-online.de>',
-	dist_version        => '0.05001',
-	requires => {
+    dist_version => '0.05002',
+    requires => {
         'perl'          => '5.6.0',
         'Sub::Uplevel'  => '0.12',
-	},
+    },
     build_requires => {
         'Test::More' => 0,
     },

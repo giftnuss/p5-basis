@@ -24,9 +24,8 @@
     }
 
 ; SKIP:
-    { skip("module base specific tests", 8) if $skip
-
-    ; package main
+    { package main
+    ; skip("module base specific tests", 8) if $skip
     ; local $basis::base = 'base'
     ; package My::Shoe
     ; eval "use basis 'My::Base', 'Exporter'"

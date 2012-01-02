@@ -9,14 +9,16 @@
 
 ; sub import { $My::Base::v="i" }
 
+; my $skip
+; BEGIN
+    { eval "require base"
+    ; $skip = !!$@
+    }
+
 ; SKIP:
     { package main
-    ; local $basis::base = $basis::base
-    ; BEGIN
-        { eval "require base"
-	; skip "base specific test",1 if $@
-	; $basis::base = 'base'
-        }
+    ; skip "base specific test",1 if $skip
+    ; local $basis::base = 'base'
     ; my $error1
     ; package My::Shoe
     ; eval "use basis 'My::Base'" 
@@ -30,3 +32,5 @@
     }
 # no warning once
 ; defined($My::Base::v) or 1
+; defined($basis::base) and 1
+
