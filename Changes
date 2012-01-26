@@ -1,4 +1,7 @@
 Revision history for basis
+0.05003 - 28 Jan 2012
+* removed the set -1 version check from testfiles, fixes rt73495
+
 0.05002 - 02 Jan 2012
 * test fix
 

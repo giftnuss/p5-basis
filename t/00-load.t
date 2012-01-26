@@ -4,7 +4,7 @@
 ; use strict
 ; package main
 
-; use Test::More tests => 5
+; use Test::More tests => 4
 
 ; BEGIN { use_ok( 'basis' ) }
 
@@ -14,6 +14,7 @@
 # Test with inline classes
 
 ; package My::Base
+; our $VERSION = "0.78";
 
 ; sub import { $My::Base::v="i" }
 
@@ -25,14 +26,13 @@
 
 SKIP:
     { package main
-    ; skip("module base specific test",4) if $skip
+    ; skip("module base specific test",3) if $skip
     ; local $basis::base = 'base'
     ; package My::Shoe
     ; eval "use basis 'My::Base'"
 
     ; package main
 
-    ; is($My::Base::VERSION, "-1, set by base.pm")
     ; ok(! My::Shoe->isa("Sub::Uplevel"))
     ; ok(My::Shoe->isa("My::Base") , "isa")
     ; is($My::Base::v , "i", "import call")

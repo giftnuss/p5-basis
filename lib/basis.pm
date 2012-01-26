@@ -3,20 +3,20 @@
 ; BEGIN 
     { unless($base)
         { for my $realbase (qw(parent base))
-	    { eval "require $realbase"
+            { eval "require $realbase"
             ; unless($@)
                 { $base = $realbase
-		; last
+                ; last
                 }
             }
-	; unless($base)
-            { die "Perl pragma parent/base not loadable."
+        ; unless($base)
+            { die "Perl pragma parent or base not loadable."
             } 
         }  
     };
 
 use Sub::Uplevel 0.12; 
-our $VERSION='0.05002';
+our $VERSION='0.05003';
 
 ; sub import
     { shift()
@@ -65,7 +65,7 @@ basis - use base with import call
 
 =head1 VERSION
 
-Version 0.05
+Version 0.05003
 
 =head1 SYNOPSIS
 
@@ -137,7 +137,7 @@ L<parent>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2006,2011 Computer-Leipzig, all rights reserved.
+Copyright 2006-2012 Computer-Leipzig, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

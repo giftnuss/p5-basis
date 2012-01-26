@@ -4,7 +4,7 @@
 ; use strict
 ; package main
 
-; use Test::More tests => 9
+; use Test::More tests => 8
 
 ; BEGIN { use_ok( 'basis' ) }
 
@@ -25,7 +25,7 @@
 
 ; SKIP:
     { package main
-    ; skip("module base specific tests", 8) if $skip
+    ; skip("module base specific tests", 7) if $skip
     ; local $basis::base = 'base'
     ; package My::Shoe
     ; eval "use basis 'My::Base', 'Exporter'"
@@ -39,9 +39,6 @@
 
     ; package main
 
-    ; use Data::Dumper
-
-    ; is($My::Base::VERSION, "-1, set by base.pm")
     ; ok(! My::Shoe->isa("Sub::Uplevel"))
     ; ok(My::Shoe->isa("My::Base") , "isa")
     ; ok(My::Shoe->isa("Exporter"))
